@@ -1,5 +1,10 @@
+@import './null-style.scss';
+
 .App {
   text-align: center;
+  &__test {
+    color: red
+  }
 }
 
 .App-logo {
