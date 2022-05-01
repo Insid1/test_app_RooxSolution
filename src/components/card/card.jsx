@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { userType } from '../../prop-types';
+import { userType } from '../../util/prop-types';
 
 function Card({ userData }) {
   const {
