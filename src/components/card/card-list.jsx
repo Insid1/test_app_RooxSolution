@@ -1,16 +1,16 @@
+import { useSelector } from 'react-redux';
+import { selectUsers } from 'store/data/selectors';
 import Card from './card';
-import { adaptDataToCLient, data } from '../../mock';
-
-const adaptedData = data.map(adaptDataToCLient);
 
 function CardList() {
+  const users = useSelector(selectUsers);
   return (
     <section className="user-list">
       <ul>
         <h1>
           Список пользователей
         </h1>
-        {adaptedData.map((userData) => (
+        {users.map((userData) => (
           <li className="user-list__element" key={userData.id}>
             <Card userData={userData} />
           </li>

@@ -14,4 +14,5 @@ const adaptDataToCLient = (user) => {
   return adaptedUser;
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { adaptDataToCLient };

@@ -3,5 +3,9 @@ const AppRoute = {
   USER: '/user/',
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { AppRoute };
+const SortingType = {
+  BY_CITY: 'BY_CITY',
+  BY_COMPANY: 'BY_COMPANY',
+};
+
+export { AppRoute, SortingType };

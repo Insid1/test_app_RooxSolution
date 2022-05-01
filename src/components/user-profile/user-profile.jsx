@@ -1,30 +1,28 @@
 import { Link, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useRef } from 'react';
-import { adaptDataToCLient, data } from '../../mock';
-
-const adaptedData = data.map(adaptDataToCLient);
+import { useSelector } from 'react-redux';
+import { selectUserById } from 'store/data/selectors';
 
 function UserProfile() {
   const { id } = useParams();
   const fieldRef = useRef();
-  const currentUser = adaptedData.find((userData) => userData.id === +id);
-  const {
-    register, handleSubmit,
-  } = useForm({
+  const currentUser = useSelector((state) => selectUserById(state, id));
+
+  const { register, handleSubmit } = useForm({
     mode: 'onblur',
   });
-
-  const handleEditClick = (evt) => {
-    evt.preventDefault();
-    fieldRef.current.disabled = !fieldRef.current.disabled;
-  };
 
   const {
     name, username, email,
     website, phone, address,
   } = currentUser;
   const { street, city, zipcode } = address;
+
+  const handleEditClick = (evt) => {
+    evt.preventDefault();
+    fieldRef.current.disabled = !fieldRef.current.disabled;
+  };
 
   const onSubmit = (currData) => {
     const insertInnerData = () => {

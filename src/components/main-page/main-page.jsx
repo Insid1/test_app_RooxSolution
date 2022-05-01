@@ -1,11 +1,13 @@
+import { useSelector } from 'react-redux';
+import { selectIsUsersLoaded } from 'store/data/selectors';
 import CardList from '../card/card-list';
 import Loader from '../loader/loader';
 import Sorting from '../sorting/sorting';
 
 function MainPage() {
-  const test = false;
+  const setIsUsersLoaded = useSelector(selectIsUsersLoaded);
 
-  if (test) {
+  if (!setIsUsersLoaded) {
     return <Loader />;
   }
 
@@ -14,7 +16,6 @@ function MainPage() {
       <Sorting />
       <div className="right-side">
         <CardList />
-        {/* <UserProfile /> */}
       </div>
     </main>
   );
