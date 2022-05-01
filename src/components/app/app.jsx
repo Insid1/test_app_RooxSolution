@@ -1,11 +1,16 @@
+import { Routes, Route } from 'react-router-dom';
 import MainPage from '../main-page/main-page';
 import UserPage from '../user-page/user-page';
-// import {BrowserRouter} from 'reactr'
+import NotFoundPage from '../not-found-page/not-found-page';
 
 function App() {
-  console.log(BrowserRouter);
   return (
-    <MainPage />
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/user/:id" element={<UserPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+
   );
 }
 

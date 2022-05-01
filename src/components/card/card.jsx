@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Card() {
   return (
     <div className="user-info-block">
@@ -12,7 +14,7 @@ function Card() {
       <div className="user-info-block__inner-item ">
         <p className="user-info-block__key">Компания:</p>
         <p className="user-info-block__value">Иван Иванов</p>
-        <button type="button">Подробнее</button>
+        <Link to="/user/123">Подробнее</Link>
       </div>
     </div>
   );

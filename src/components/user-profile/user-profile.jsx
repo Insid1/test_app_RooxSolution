@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
+
 function UserProfile() {
   return (
     <section className="user-profile">
       <div className="user-profile__info">
         <h1>Профиль пользователя</h1>
+        <Link className="button edit-button" to="/">
+          На главную
+        </Link>
         <button className="button edit-button" type="button">Редактировать</button>
       </div>
       <form className="card-form">
