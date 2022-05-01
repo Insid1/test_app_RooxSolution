@@ -192,3 +192,9 @@ main {
   margin: 0;
 }
 
+.active {
+  :disabled {
+    color: red;
+  }
+}
+
