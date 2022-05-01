@@ -63,6 +63,12 @@ main {
   &:hover {
     border: solid white 1.5px;
   }
+  
+  &:disabled {
+    background-color: #6e6e6e;
+    border: solid #6e6e6e 1.5px;
+    
+  }
 
 }
 

@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectUsers } from 'store/data/selectors';
+import { selectSortedUsers } from 'store/data/selectors';
 import Card from './card';
 
 function CardList() {
-  const users = useSelector(selectUsers);
+  const users = useSelector(selectSortedUsers);
   return (
     <section className="user-list">
       <ul>

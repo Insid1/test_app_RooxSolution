@@ -6,10 +6,10 @@ const initialState = {
   sortingType: SortingType.BY_CITY,
 };
 
-const dataReducer = createReducer(initialState, (builder) => {
+const interfaceReducer = createReducer(initialState, (builder) => {
   builder.addCase(ActionType.SET_SORTING_TYPE, (state, action) => {
     state.sortingType = action.payload;
   });
 });
 
-export default dataReducer;
+export default interfaceReducer;

@@ -1,4 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { selectSortingType } from 'store/interface/selectors';
+import { sortUsers } from 'util/util';
 
 const selectUsers = (state) => state.DATA.users;
 
@@ -13,6 +15,11 @@ const selectUserById = createSelector(
   (users, userId) => users.find((userData) => userData.id === +userId),
 );
 
+const selectSortedUsers = createSelector(
+  [selectUsers, selectSortingType],
+  (users, sortingType) => sortUsers(users, sortingType),
+);
+
 export {
-  selectUsers, selectIsUsersLoaded, selectUsersLength, selectUserById,
+  selectUsers, selectIsUsersLoaded, selectUsersLength, selectUserById, selectSortedUsers,
 };
