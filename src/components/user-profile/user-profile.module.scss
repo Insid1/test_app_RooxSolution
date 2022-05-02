@@ -1,0 +1,14 @@
+.user-profile {
+  h1 {
+    flex: 1 1 auto;
+  }
+
+  a, button {
+    margin: 0 5px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between
+  }
+}

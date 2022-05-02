@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from 'util/const';
 import { userType } from 'util/prop-types';
 import styles from './card.module.scss';
 
@@ -21,7 +22,7 @@ function Card({ userData }) {
       <div className={styles['user-info-block__inner-item']}>
         <p className={styles['user-info-block__key']}>Компания:</p>
         <p>{companyName}</p>
-        <Link to={`/user/${id}`}>Подробнее</Link>
+        <Link to={AppRoute.USER + id}>Подробнее</Link>
       </div>
     </div>
   );

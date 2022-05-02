@@ -1,6 +1,7 @@
 const AppRoute = {
   MAIN: '/',
   USER: '/user/',
+  ERROR: '/error',
 };
 
 const SortingType = {

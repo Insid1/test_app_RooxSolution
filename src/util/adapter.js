@@ -14,5 +14,12 @@ const adaptDataToCLient = (user) => {
   return adaptedUser;
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { adaptDataToCLient };
+const adaptDataToServer = (user) => {
+  const adaptedUser = {
+    ...user,
+    phone: user.phone.join(' '),
+  };
+  return adaptedUser;
+};
+
+export { adaptDataToCLient, adaptDataToServer };

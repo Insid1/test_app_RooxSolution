@@ -5,7 +5,6 @@ import styles from './card-list.module.scss';
 
 function CardList() {
   const users = useSelector(selectSortedUsers);
-  console.log(styles);
   return (
     <section>
       <ul>

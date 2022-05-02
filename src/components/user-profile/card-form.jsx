@@ -1,20 +1,30 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUserById } from 'store/data/selectors';
 import { useForm } from 'react-hook-form';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
+import { postUser } from 'store/data/api-actions';
+import Notification from 'components/notification/notification';
+import styles from './card-form.module.scss';
 
 const CardForm = forwardRef((props, fieldRef) => {
   const { id } = useParams();
+  const [isFetchFailed, setIsFetchFailed] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+
   const currentUser = useSelector((state) => selectUserById(state, id));
   const { register, handleSubmit } = useForm({
     mode: 'onblur',
   });
+  const dispatch = useDispatch();
+
   const {
     name, username, email,
     website, phone, address,
   } = currentUser;
   const { street, city, zipcode } = address;
+
   const onSubmit = (currData) => {
     const insertInnerData = () => {
       const result = {
@@ -33,12 +43,24 @@ const CardForm = forwardRef((props, fieldRef) => {
       delete result.zipcode;
       return result;
     };
-    // insertInnerData();
-    console.log(insertInnerData());
+    const rawData = insertInnerData();
+    setIsFetching(true);
+
+    dispatch(postUser(rawData))
+      .then(() => {
+        setIsFetching(false);
+        setIsFetchFailed(false);
+        setShowNotification(true);
+      })
+      .catch(() => {
+        setIsFetching(false);
+        setIsFetchFailed(true);
+        setShowNotification(true);
+      });
   };
 
   return (
-    <form className="card-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles['card-form']} onSubmit={handleSubmit(onSubmit)}>
       <fieldset ref={fieldRef} disabled>
         <label className="label-for-input" htmlFor="input-name">
           Name
@@ -134,12 +156,11 @@ const CardForm = forwardRef((props, fieldRef) => {
           minLength={5}
           {...register('comment')}
         />
-        <button type="submit" className="button card-form__submit-button">Отправить</button>
-
+        <button type="submit" disabled={isFetching} className={`button ${styles['card-form__submit-button']}`}>Отправить</button>
+        { showNotification ? <Notification isError={isFetchFailed} /> : ''}
       </fieldset>
     </form>
   );
 });
-// Передать ref из верхнего компонента
 
 export default CardForm;

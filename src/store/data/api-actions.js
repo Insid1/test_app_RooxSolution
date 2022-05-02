@@ -1,4 +1,4 @@
-import { adaptDataToCLient } from 'util/adapter';
+import { adaptDataToCLient, adaptDataToServer } from 'util/adapter';
 import { loadUsers, setIsUsersLoaded } from './action';
 
 const fetchUsers = () => (dispatch, _getState, api) => api.get()
@@ -13,5 +13,15 @@ const fetchUsers = () => (dispatch, _getState, api) => api.get()
   .catch(() => {
   });
 
-// eslint-disable-next-line import/prefer-default-export
-export { fetchUsers };
+const postUser = (userData) => (dispatch, _getState, api) => {
+  const adaptedUserData = adaptDataToServer(userData);
+  return api.post('', { adaptedUserData })
+    .then((response) => {
+      console.log(JSON.stringify(adaptedUserData));
+    })
+    .catch((err) => {
+      throw Error(err);
+    });
+};
+
+export { fetchUsers, postUser };
