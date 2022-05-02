@@ -15,7 +15,7 @@ const fetchUsers = () => (dispatch, _getState, api) => api.get()
 
 const postUser = (userData) => (dispatch, _getState, api) => {
   const adaptedUserData = adaptDataToServer(userData);
-  return api.post('', { adaptedUserData })
+  return api.put(`${userData.id}`, { adaptedUserData })
     .then((response) => {
       console.log(JSON.stringify(adaptedUserData));
     })
