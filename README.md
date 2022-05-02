@@ -1,6 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Specification by [Roox Solution](https://roox.ru/)
+
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Необходимо сверстать предложенный макет, и написать простое SPA на React 16, используя следующие инструменты, технологии и подходы
 
@@ -20,9 +20,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Пока идет загрузка списка пользователей должен быть индикатор загрузки( дизайн любой на усмотрение исполнителя )
 3. Вывести на карточку:
 
-3.1 name
-3.2 address.city
-3.3 company.name
+- name
+- address.city
+- company.name
 
 4. Кнопка “Подробнее” должна вести на “Профиль пользователя”
 5. Реализовать фильтрацию списка по признаку Name и City в алфавитном порядке
@@ -51,9 +51,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. Реализовать кнопку изменить, изначально поля должны быть readonly, после нажатия на кнопку поля можно редактировать
 4. Реализовать валидацию на клиенте
 5. Все поля формы, кроме поля Comment, обязательны для заполнения
-6. Из данных формы при отправке нужно сформировать JSON и вывести его в
-
-    консоль.
+6. Из данных формы при отправке нужно сформировать JSON и вывести его в консоль.
 
 ## Available Scripts
 
