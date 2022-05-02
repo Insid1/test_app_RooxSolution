@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { userType } from '../../util/prop-types';
+import { userType } from 'util/prop-types';
+import styles from './card.module.scss';
 
 function Card({ userData }) {
   const {
@@ -8,18 +9,18 @@ function Card({ userData }) {
   const companyName = company.name;
   const { city } = address;
   return (
-    <div className="user-info-block">
-      <div className="user-info-block__inner-item ">
-        <p className="user-info-block__key">ФИО:</p>
-        <p className="user-info-block__value">{name}</p>
+    <div className={styles['user-info-block']}>
+      <div className={styles['user-info-block__inner-item']}>
+        <p className={styles['user-info-block__key']}>ФИО:</p>
+        <p>{name}</p>
       </div>
-      <div className="user-info-block__inner-item ">
-        <p className="user-info-block__key">Город:</p>
-        <p className="user-info-block__value">{city}</p>
+      <div className={styles['user-info-block__inner-item']}>
+        <p className={styles['user-info-block__key']}>Город:</p>
+        <p>{city}</p>
       </div>
-      <div className="user-info-block__inner-item ">
-        <p className="user-info-block__key">Компания:</p>
-        <p className="user-info-block__value">{companyName}</p>
+      <div className={styles['user-info-block__inner-item']}>
+        <p className={styles['user-info-block__key']}>Компания:</p>
+        <p>{companyName}</p>
         <Link to={`/user/${id}`}>Подробнее</Link>
       </div>
     </div>

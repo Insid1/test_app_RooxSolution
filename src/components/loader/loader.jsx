@@ -1,10 +1,10 @@
-import './loader.css';
+import styles from './loader.module.scss';
 
 function Loader() {
   return (
-    <div className="loader">
+    <div className={styles.loader}>
       <span>Loading...</span>
-      <div className="lds-dual-ring" />
+      <div className={styles['lds-dual-ring']} />
     </div>
   );
 }

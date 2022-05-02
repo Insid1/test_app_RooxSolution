@@ -32,8 +32,13 @@ main {
 
 }
 
-.sorting {
+.left-side {
   background: #BDBDBD;
+  min-width: 150px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 .right-side {
@@ -72,62 +77,7 @@ main {
 
 }
 
-.left-side {
-  min-width: 150px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
 
-}
-
-.user-list {
-  &__element {
-    margin: 14px 0;
-  }
-}
-
-.user-info-block {
-  padding: 10px;
-  min-width: 300px;
-  max-width: 420px;
-  height: 73px;
-  background: #F3F3F3;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: solid #F3F3F3 1px;
-  transition: border 0.1s ease-in-out;
-
-  &__key {
-    margin-right: 7px;
-    color: #cccccc
-  }
-
-  &__inner-item {
-    display: flex;
-    p {
-      font-size: 11px;
-    }
-  }
-
-  a {
-    display: inline-block;
-    color: #4B51EF;
-    margin-left: auto;
-    font-size: 12px;
-    cursor: pointer;
-    transition: text-shadow 0.1s ease-in-out;
-    &:hover{
-      text-shadow: .5px 0 0,-.5px 0 0;
-    }
-
-  }
-
-  &:hover {
-    border: solid #4B51EF 1px;
-  }
-}
 
 .user-profile {
 
@@ -197,10 +147,3 @@ main {
 .edit-button {
   margin: 0;
 }
-
-.active {
-  :disabled {
-    color: red;
-  }
-}
-
