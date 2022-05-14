@@ -1,6 +1,7 @@
-const { SortingType } = require('./const');
+import type { IUser } from 'types/user-types';
+import { SortingType } from './enums';
 
-const sortUsers = (users, sortingType) => {
+const sortUsers = (users: IUser[], sortingType: SortingType): IUser[] => {
   const usersCopy = users.slice();
   switch (sortingType) {
     case SortingType.BY_CITY: {

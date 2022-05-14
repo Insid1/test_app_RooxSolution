@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
+import { IUser } from 'types/user-types';
 import { AppRoute } from 'util/const';
-import { userType } from 'util/prop-types';
 import styles from './card.module.scss';
 
-function Card({ userData }) {
+interface CardProps {
+  userData: IUser
+}
+
+function Card({ userData } : CardProps) {
   const {
     id, name, company, address,
   } = userData;
@@ -27,9 +31,5 @@ function Card({ userData }) {
     </div>
   );
 }
-
-Card.propTypes = {
-  userData: userType.isRequired,
-};
 
 export default Card;

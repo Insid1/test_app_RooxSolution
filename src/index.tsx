@@ -3,25 +3,13 @@ import { Provider } from 'react-redux';
 import './css/style.scss';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { configureStore } from '@reduxjs/toolkit';
+import store from 'store/store';
 import App from './components/app/app';
 // import reportWebVitals from './reportWebVitals';
-import createApi from './api/api';
-import rootReducer from './store/root-reducer';
-import { fetchUsers } from './store/data/api-actions';
+// import { fetchUsers } from './store/data/api-actions';
 
-const api = createApi();
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    thunk: {
-      extraArgument: api,
-    },
-  }),
-});
-
-store.dispatch(fetchUsers());
+// store.dispatch(fetchUsers());
 
 ReactDOM.render(
   <React.StrictMode>
