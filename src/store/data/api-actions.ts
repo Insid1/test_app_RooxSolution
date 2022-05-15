@@ -7,7 +7,8 @@ const fetchUsers = createAsyncThunk(
   'data/users',
   async () => {
     const response = await api.get('');
-    return adaptDataToCLient(response.data);
+    const adaptedData = response.data.map(adaptDataToCLient);
+    return adaptedData;
   },
 );
 const postUser = createAsyncThunk(

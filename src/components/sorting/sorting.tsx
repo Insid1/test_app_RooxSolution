@@ -1,4 +1,4 @@
-import { SortingType } from 'util/const';
+import { SortingType } from 'util/enums';
 import SortingButton from './sorting-button';
 
 function Sorting() {

@@ -1,4 +1,6 @@
-const adaptDataToCLient = (user) => {
+import type { IServerUser, IUser } from 'types/user-types';
+
+const adaptDataToCLient = (user: IServerUser): IUser => {
   const adaptedUser = {
     ...user,
     address: {
@@ -14,9 +16,16 @@ const adaptDataToCLient = (user) => {
   return adaptedUser;
 };
 
-const adaptDataToServer = (user) => {
+const adaptDataToServer = (user: IUser): IServerUser => {
   const adaptedUser = {
     ...user,
+    address: {
+      ...user.address,
+      geo: {
+        lat: `${user.address.geo.lat}`,
+        lng: `${user.address.geo.lng}`,
+      },
+    },
     phone: user.phone.join(' '),
   };
   return adaptedUser;

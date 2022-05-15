@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
 import { AppRoute } from 'util/const';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { setIsFormActive } from 'store/interface/interface-slice';
+import { selectIsFormActive } from 'store/interface/selectors';
 import CardForm from './card-form';
 import styles from './user-profile.module.scss';
 
-function UserProfile() {
-  const fieldRef = useRef();
-
-  const handleEditClick = (evt) => {
-    evt.preventDefault();
-    fieldRef.current.disabled = !fieldRef.current.disabled;
+function UserProfile({ id } : { id: number }) {
+  const isFormActive = useAppSelector(selectIsFormActive);
+  const dispatch = useAppDispatch();
+  const handleEditClick: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
+    dispatch(setIsFormActive(!isFormActive));
   };
-
   return (
     <section className={styles['user-profile']}>
       <div className={styles['user-profile__info']}>
@@ -27,7 +27,7 @@ function UserProfile() {
           Редактировать
         </button>
       </div>
-      <CardForm ref={fieldRef} />
+      <CardForm />
     </section>
   );
 }

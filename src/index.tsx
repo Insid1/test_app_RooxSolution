@@ -4,12 +4,10 @@ import './css/style.scss';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import store from 'store/store';
+import { fetchUsers } from 'store/data/api-actions';
 import App from './components/app/app';
-// import reportWebVitals from './reportWebVitals';
-// import { fetchUsers } from './store/data/api-actions';
 
-
-// store.dispatch(fetchUsers());
+store.dispatch(fetchUsers());
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,13 +15,7 @@ ReactDOM.render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
-
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals(console.log);

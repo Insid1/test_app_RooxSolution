@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
+interface NotificationProps {
+  isError: boolean
+}
 
-function Notification({ isError }) {
+function Alert({ isError }: NotificationProps) {
   if (isError) {
     return (
-
       <p style={{
         color: 'red',
       }}
@@ -23,8 +24,4 @@ function Notification({ isError }) {
   );
 }
 
-Notification.propTypes = {
-  isError: PropTypes.bool.isRequired,
-};
-
-export default Notification;
+export default Alert;

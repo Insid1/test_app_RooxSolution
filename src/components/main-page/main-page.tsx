@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux';
+import CardList from 'components/card/card-list';
+import Loader from 'components/loader/loader';
+import Sorting from 'components/sorting/sorting';
 import { selectIsUsersLoaded } from 'store/data/selectors';
-import CardList from '../card/card-list';
-import Loader from '../loader/loader';
-import Sorting from '../sorting/sorting';
+import { useAppSelector } from 'store/hooks';
 
 function MainPage() {
-  const setIsUsersLoaded = useSelector(selectIsUsersLoaded);
+  const setIsUsersLoaded = useAppSelector(selectIsUsersLoaded);
 
   if (!setIsUsersLoaded) {
     return <Loader />;

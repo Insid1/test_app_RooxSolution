@@ -2,11 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SortingType } from 'util/enums';
 
 interface IInitialState {
-  sortingType: SortingType
+  sortingType: SortingType,
+  isFormActive: boolean,
+  CurrentUserId: number,
 }
 
 const initialState: IInitialState = {
   sortingType: SortingType.BY_CITY,
+  isFormActive: false,
+  CurrentUserId: -1,
 };
 
 const interfaceSlice = createSlice({
@@ -16,8 +20,14 @@ const interfaceSlice = createSlice({
     setSortingType(state, action: PayloadAction<SortingType>) {
       state.sortingType = action.payload;
     },
+    setIsFormActive(state, action: PayloadAction<boolean>) {
+      state.isFormActive = action.payload;
+    },
+    setCurrentUserId(state, action: PayloadAction<number>) {
+      state.CurrentUserId = action.payload;
+    },
   },
 });
 
-export const { setSortingType } = interfaceSlice.actions;
-export default interfaceSlice.dataReducer;
+export const { setSortingType, setIsFormActive, setCurrentUserId } = interfaceSlice.actions;
+export default interfaceSlice.reducer;

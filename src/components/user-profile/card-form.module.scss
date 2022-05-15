@@ -1,5 +1,5 @@
 .card-form {
-  border: 1px solid #F3F3F3;
+  border: 1px solid #f3f3f3;
   border-radius: 5px;
   padding: 22px 12px;
   margin-top: 10px;
@@ -9,7 +9,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-  
   }
 
   input {
@@ -19,37 +18,38 @@
     width: 211px;
     max-width: 211px;
     line-height: 12px;
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d8d8d8;
     border-radius: 5px;
     padding: 5px 10px;
     &:invalid {
-      border: 1px solid #D91313
+      border: 1px solid #d91313;
     }
   }
 
   textarea {
     position: relative;
     margin: 11px 0;
-    border: 1px solid #D8D8D8;
+    border: 1px solid #d8d8d8;
     border-radius: 5px;
     padding: 5px 10px;
     resize: none;
   }
-  
+
   label {
-    position:relative;
+    position: relative;
     top: 5px;
     background: none;
+    text-transform: capitalize;
   }
 
   &__submit-button {
-    background: #52CF4F;
+    background: #52cf4f;
     max-width: 85px;
     align-self: end;
-    border: solid #52CF4F 1px;
+    border: solid #52cf4f 1px;
     &:disabled {
-      border: solid #AFAFAF 1px;
-      background: #AFAFAF;
+      border: solid #afafaf 1px;
+      background: #afafaf;
     }
   }
 }

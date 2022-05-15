@@ -1,19 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setSortingType } from 'store/interface/action';
+import { useSelector } from 'react-redux';
 import { selectSortingType } from 'store/interface/selectors';
-import { SortingType } from 'util/const';
-import PropTypes from 'prop-types';
+import { SortingType } from 'util/enums';
+import { setSortingType } from 'store/interface/interface-slice';
+import { useAppDispatch } from 'store/hooks';
 
 const mapToSortingName = {
   [SortingType.BY_CITY]: 'По городу',
   [SortingType.BY_COMPANY]: 'По компании',
 };
 
-function SortingButton({ itsType }) {
-  const dispatch = useDispatch();
+interface SortingButtonProps {
+  itsType: SortingType
+}
+
+function SortingButton({ itsType }: SortingButtonProps) {
+  const dispatch = useAppDispatch();
   const sortingType = useSelector(selectSortingType);
 
-  const handleClick = (evt) => {
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
     evt.preventDefault();
     dispatch(setSortingType(itsType));
   };
@@ -29,9 +33,5 @@ function SortingButton({ itsType }) {
     </button>
   );
 }
-
-SortingButton.propTypes = {
-  itsType: PropTypes.string.isRequired,
-};
 
 export default SortingButton;
