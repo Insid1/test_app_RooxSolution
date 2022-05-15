@@ -103,7 +103,7 @@ function CardForm() {
           Отправить
         </button>
         { showNotification
-          ? <Alert isError={isUserDataSend} />
+          ? <Alert isError={!isUserDataSend} />
           : ''}
       </fieldset>
     </form>

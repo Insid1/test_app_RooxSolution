@@ -25,7 +25,7 @@ const postUser = createAsyncThunk(
   'data/user',
   async (user : IUser) => {
     const adaptedData = adaptDataToServer(user);
-    const response = await api.put(`${user.id}`, { adaptedData });
+    const response = await api.put(`${user.id}`, adaptedData);
     return adaptDataToCLient(response.data);
   },
 );
