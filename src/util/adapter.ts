@@ -1,4 +1,5 @@
-import type { IServerUser, IUser } from 'types/user-types';
+import { IFormDataUser } from 'types/form-data-user';
+import type { IServerUser, IUser, IUserPost } from 'types/user-types';
 
 const adaptDataToCLient = (user: IServerUser): IUser => {
   const adaptedUser = {
@@ -31,4 +32,25 @@ const adaptDataToServer = (user: IUser): IServerUser => {
   return adaptedUser;
 };
 
-export { adaptDataToCLient, adaptDataToServer };
+const adaptFormDataToClient = (formData: IFormDataUser, user: IUser) : IUserPost => {
+  const adaptedData = {
+    id: user.id,
+    name: formData.name,
+    username: formData.username,
+    email: formData.email,
+    address: {
+      street: formData.street,
+      suite: user.address.suite,
+      city: formData.city,
+      zipcode: formData.zipcode,
+      geo: user.address.geo,
+    },
+    phone: [formData.phone, user.phone[2]],
+    website: formData.website,
+    company: user.company,
+    comment: formData.comment,
+  };
+  return adaptedData;
+};
+
+export { adaptDataToCLient, adaptDataToServer, adaptFormDataToClient };

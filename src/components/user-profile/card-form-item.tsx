@@ -1,16 +1,18 @@
 import { memo } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import { IFormDataUser } from 'types/form-data-user';
 
 interface CardFormItemProps {
   type?: React.HTMLInputTypeAttribute,
   defaultValue: string | number,
   title: string,
-  register: UseFormRegister<FieldValues>,
+  dataName: keyof IFormDataUser,
+  register: UseFormRegister<IFormDataUser>,
   componentType?: undefined | 'textarea',
 }
 
 function CardFormItem({
-  type = 'text', defaultValue, title, register, componentType,
+  type = 'text', defaultValue, title, register, componentType, dataName,
 } : CardFormItemProps) {
   return (
     <>
@@ -29,7 +31,7 @@ function CardFormItem({
             id={`input-${title}`}
             defaultValue={defaultValue}
             minLength={5}
-            {...register(title)}
+            {...register(dataName)}
           />
         )
         : (
@@ -37,7 +39,7 @@ function CardFormItem({
             required
             type={type}
             id={`input-${title}`}
-            {...register(title)}
+            {...register(dataName)}
             defaultValue={defaultValue}
           />
         )}

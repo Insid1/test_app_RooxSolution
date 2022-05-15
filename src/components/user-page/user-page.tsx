@@ -1,34 +1,36 @@
 import Loader from 'components/loader/loader';
-import { useParams, Navigate } from 'react-router-dom';
-import { selectIsUsersLoaded } from 'store/data/selectors';
+import { useParams, useNavigate } from 'react-router-dom';
+import { selectIsCurrentUserLoaded } from 'store/data/selectors';
 import Sorting from 'components/sorting/sorting';
 import UserProfile from 'components/user-profile/user-profile';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { setCurrentUserId } from 'store/interface/interface-slice';
 import { useEffect } from 'react';
-import { fetchUsers } from 'store/data/api-actions';
+import { fetchUser } from 'store/data/api-actions';
 
 function UserPage() {
-  const { id } = useParams();
-  const isUsersLoaded = useAppSelector(selectIsUsersLoaded);
-  // const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams<string>();
+  const dispatch = useAppDispatch();
+  const isCurrentUserLoaded = useAppSelector(selectIsCurrentUserLoaded);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchUser(+id));
+    }
+  }, [dispatch, id]);
 
   if (!id || (+id > 10 || +id < 1 || isNaN(+id))) {
-    return <Navigate to="/error" replace />;
+    navigate('error');
   }
-  // setTimeout(() => {
-  //   dispatch(setCurrentUserId(+id));
-  // }, 500);
-  // // dispatch(setCurrentUserId(+id));
 
   return (
-    !isUsersLoaded
+    !isCurrentUserLoaded
       ? (<Loader />)
       : (
         <main>
           <Sorting />
           <div className="right-side">
-            <UserProfile id={+id} />
+            <UserProfile />
           </div>
         </main>
       )

@@ -50,6 +50,10 @@ interface IServerUser {
   },
 }
 
+interface IUserPost extends IUser {
+  comment: string,
+}
+
 export type {
-  IUser, IUserAddress, IUserCompany, IServerUser,
+  IUser, IUserAddress, IUserCompany, IServerUser, IUserPost,
 };

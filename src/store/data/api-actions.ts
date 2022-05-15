@@ -11,6 +11,16 @@ const fetchUsers = createAsyncThunk(
     return adaptedData;
   },
 );
+
+const fetchUser = createAsyncThunk(
+  'data/currentUser',
+  async (id: number) => {
+    const response = await api.get(`${id}`);
+    const adaptedData = adaptDataToCLient(response.data);
+    return adaptedData;
+  },
+);
+
 const postUser = createAsyncThunk(
   'data/user',
   async (user : IUser) => {
@@ -20,4 +30,4 @@ const postUser = createAsyncThunk(
   },
 );
 
-export { fetchUsers, postUser };
+export { fetchUsers, fetchUser, postUser };

@@ -6,7 +6,7 @@ import { selectIsFormActive } from 'store/interface/selectors';
 import CardForm from './card-form';
 import styles from './user-profile.module.scss';
 
-function UserProfile({ id } : { id: number }) {
+function UserProfile() {
   const isFormActive = useAppSelector(selectIsFormActive);
   const dispatch = useAppDispatch();
   const handleEditClick: React.MouseEventHandler<HTMLButtonElement> = (evt) => {

@@ -11,6 +11,10 @@ const selectIsUsersLoaded = (state: RootState) => state.DATA.isUsersLoaded;
 
 const selectUsersLength = (state: RootState) => state.DATA.users.length;
 
+const selectCurrentUser = (state: RootState) => state.DATA.currentUser;
+
+const selectIsCurrentUserLoaded = (state: RootState) => state.DATA.isCurrentUserLoaded;
+
 const selectUserId = (state: RootState, userId: number | string) => userId;
 
 const selectIsFetching = (state: RootState) => state.DATA.isFetching;
@@ -38,4 +42,5 @@ export {
   selectUsers, selectIsUsersLoaded, selectUsersLength,
   selectUserById, selectSortedUsers, selectIsFetching,
   selectIsUserDataSend, selectLoadingError, selectShowNotification,
+  selectCurrentUser, selectIsCurrentUserLoaded,
 };

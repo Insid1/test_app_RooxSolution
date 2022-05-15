@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { IUser } from 'types/user-types';
-import { fetchUsers, postUser } from './api-actions';
+import { blankUserData } from 'util/blank-data';
+import { fetchUser, fetchUsers, postUser } from './api-actions';
 
 interface IInitialState {
   users: IUser[],
   isUsersLoaded: boolean,
+  currentUser: IUser,
+  isCurrentUserLoaded: boolean,
+
   loadingError: string,
   isUserDataSend: boolean,
   isFetching: boolean,
@@ -14,6 +18,9 @@ interface IInitialState {
 const initialState: IInitialState = {
   users: [],
   isUsersLoaded: false,
+  currentUser: blankUserData,
+  isCurrentUserLoaded: false,
+
   loadingError: '',
   isUserDataSend: true,
   isFetching: false,
@@ -30,6 +37,14 @@ const dataSlice = createSlice({
     setIsUsersLoaded(state, action: PayloadAction<boolean>) {
       state.isUsersLoaded = action.payload;
     },
+
+    loadCurrentUser(state, action: PayloadAction<IUser>) {
+      state.currentUser = action.payload;
+    },
+    setIsCurrentLoaded(state, action: PayloadAction<boolean>) {
+      state.isCurrentUserLoaded = action.payload;
+    },
+
     setLoadingError(state, action: PayloadAction<string>) {
       state.loadingError = action.payload;
     },
@@ -51,6 +66,11 @@ const dataSlice = createSlice({
     builder.addCase(fetchUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
       state.isUsersLoaded = true;
       state.users = action.payload;
+    });
+
+    builder.addCase(fetchUser.fulfilled, (state, action: PayloadAction<IUser>) => {
+      state.isCurrentUserLoaded = true;
+      state.currentUser = action.payload;
     });
 
     builder.addCase(postUser.fulfilled, (state, action: PayloadAction<IUser>) => {
